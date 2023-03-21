@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{% static 'styles/reset.css' %}" />
+        <link rel="stylesheet" href="{% static 'styles/index.css' %}" />
+        <title>TALAR</title>
+        {% load bootstrap5 %} {% bootstrap_css %} {% bootstrap_javascript %}
+    </head>
+    <body class="body">
+        <div class="gradient" class="p-3" class="row">
+            <img width="100px" src="{% static 'images/talar-logo.png' %}" alt="Talar-logo" />
+        </div>
+
+        <div class="row">
+            <div class="col-12" id="navegador">
+                <ul class="menu d-flex align-items-center">
+                    <li class="m-1 m-sm-3 m-xl-5">
+                        <a href="/">Inicio</a>
+                    </li>
+                    <li class="m-1 m-sm-3 m-xl-5">
+                        <a href="/lista">Lista</a>
+                    </li>
+                    <li class="m-1 m-sm-3 m-xl-5">
+                        <a href="/reporte"> Reporte de incidente </a>
+                    </li>
+                    <li class="m-1 m-sm-3 m-xl-5">
+                        <a href="/nosotros"> Nosotros </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="content">{% block content %} {% endblock %}</div>
+    </body>
+</html>

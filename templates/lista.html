@@ -1,0 +1,20 @@
+{% extends 'layouts/main.html' %}
+
+{%block content%}
+
+{% for i in incidentes %}
+
+<div class="my-4 border-bottom row d-flex">
+    <div>
+        <h2>{{i.equipo}}</h2>
+        <p>{{i.descripcion}}</p>
+    </div>
+    <div>
+        <a href="/reporte/{{i.id}}">Editar</a>
+    </div>
+</div>
+
+
+{% endfor %}
+
+{%endblock%}

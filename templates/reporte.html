@@ -1,0 +1,75 @@
+{% extends 'layouts/main.html' %}
+
+{%block content%}
+
+<div class="container-fluid bg-dark text-white py-4">
+    <div class="row">
+        <div class="col-12">
+            <h2>Reporte de incidente</h2>
+        </div>
+    </div>
+    <form method="POST" id="reporte-incidente" action="">
+        {% csrf_token %}
+
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="form-group col-12 col-md-3">
+                        <label for="">Ubicación</label>
+                        <input type="text" name="ubicacion" id="ubicacion" class="form-control" 
+                        {% if post is not None %}
+                            value="{{post.ubicacion}}"
+                        {% endif %}
+                        />
+                    </div>
+                    <div class="form-group col-12 col-md-3">
+                        <label for="">Equipo</label>
+                        <input type="text" name="equipo" id="equipo" class="form-control" 
+                        {% if post is not None %}
+                            value="{{post.equipo}}"
+                        {% endif %}
+                        />
+                    </div>
+                    <div class="form-group col-12 col-md-3">
+                        <label for="">Tipo de incidente</label>
+                        <select name="incidencia" class="form-select"
+                        {% if post is not None %}
+                            value="{{post.incidencia}}"
+                        {% endif %}
+                        >
+                            <option value="averia">Avería</option>
+                            <option value="falla">Falla</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-12 col-md-3">
+                        <label for="">Usuario</label>
+                        <select name="usuario" class="form-select"
+
+                        {% if post is not None %}
+                            value="{{post.usuario}}"
+                        {% endif %}
+
+                        >
+                            <option value="chape">Chape</option>
+                            <option value="matos">Matos</option>
+                            <option value="fiti">Fiti</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-12">
+                <label for="">Descripcion</label>
+                <textarea class="form-control mr-0" rows="6" type="text" name="descripcion" id="descripcion">{% if post is not None %}{{post.descripcion}}{% endif %}</textarea>
+            </div>
+        </div>
+    </form>
+    <div class="form-group row mt-3">
+        <div class="col-5"></div>
+        <button type="submit" class="btn btn-success col-2" form="reporte-incidente">Reportar</button>
+        <div class="col-5"></div>
+    </div>
+</div>
+
+{%endblock%}
