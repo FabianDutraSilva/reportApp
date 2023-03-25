@@ -1,0 +1,92 @@
+{% extends 'layouts/main.html' %} {%block content%}
+
+<div class="container-fluid bg-dark text-white py-4">
+    <div class="row">
+        <div class="col-12">
+            <h2>Agregar equipo</h2>
+        </div>
+    </div>
+    <form method="POST" id="agregar-equipo" action="">
+        {% csrf_token %} {% if equipo is not None %}
+        <input type="hidden" value="{{equipo.id}}" name="id" />
+        {%endif%}
+
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="form-group col-12 col-md-3">
+                        <label for="">Nombre</label>
+                        <input type="text" name="nombre" id="nombre" class="form-control"
+                        {% if equipo is not None %}
+                            value="{{equipo.nombre}}"
+                        {%endif%}
+                        >
+                    </div>
+                    <div class="form-group col-12 col-md-3">
+                        <label for="">Marca</label>
+                        <input type="text" name="marca" id="marca" class="form-control"
+                        {% if equipo is not None %}
+                            value="{{equipo.marca}}"
+                        {%endif%}
+                        >
+                    </div>
+                    <div class="form-group col-12 col-md-3">
+                        <label for="">Modelo</label>
+                        <input type="text" name="modelo" class="form-control"
+                        {% if equipo is not None %}
+                            value="{{equipo.modelo}}"
+                        {%endif%}
+                        >
+                    </div>
+                    <div class="form-group col-12 col-md-3">
+                        <label for="">Serie</label>
+                        <input type="text" name="serie" class="form-control"
+                        {% if equipo is not None %}
+                            value="{{equipo.serie}}"
+                        {%endif%}
+                        >
+                    </div>
+                    <div class="form-group col-12 col-md-3">
+                        <label for="">Codigo</label>
+                        <input type="text" name="codigo" class="form-control"
+                        {% if equipo is not None %}
+                            value="{{equipo.codigo}}"
+                        {%endif%}
+                        >
+                    </div>
+                    <div class="form-group col-12 col-md-3">
+                        <label for="">Centro de costo</label>
+                        <input type="text" name="centroCosto" class="form-control"
+                        {% if equipo is not None %}
+                            value="{{equipo.centroCosto}}"
+                        {%endif%}
+                        >
+                    </div>
+                    <div class="form-group col-12 col-md-3">
+                        <label for="">Prioridad</label>
+                        <input type="text" name="prioridad" class="form-control"
+                        {% if equipo is not None %}
+                            value="{{equipo.prioridad}}"
+                        {%endif%}
+                        >
+                    </div>
+                    <div class="form-group col-12 col-md-3">
+                        <label for="">Parte de</label>
+                        <input type="text" name="parteDe" class="form-control"
+                        {% if equipo is not None %}
+                            value="{{equipo.parteDe}}"
+                        {%endif%}
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="form-group row mt-3">
+        <div class="col-5"></div>
+        <button type="submit" class="btn btn-success col-2" form="agregar-equipo">Agregar</button>
+        <div class="col-5"></div>
+    </div>
+</div>
+
+{%endblock%}

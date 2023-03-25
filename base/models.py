@@ -14,9 +14,9 @@ class Ubicacion(models.Model):
     prioridad = models.CharField(max_length=200)
     parteDe = models.CharField(max_length=200)
     def __str__(self):
-        return self.nombre
+        return str(self.nombre)
 
-class Activo(models.Model):
+class Equipo(models.Model):
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
     nombre = models.CharField(max_length=200)
@@ -28,7 +28,7 @@ class Activo(models.Model):
     prioridad = models.CharField(max_length=200)
     parteDe = models.CharField(max_length=200)
     def __str__(self):
-        return self.nombre
+        return str(self.nombre)
 
 class Rrhh(models.Model):
     updated = models.DateTimeField(auto_now=True)
@@ -44,31 +44,29 @@ class Rrhh(models.Model):
     nominal = models.PositiveSmallIntegerField()
     extra = models.PositiveSmallIntegerField()
     def __str__(self):
-        return self.nombre + ' ' + self.apellido
+        return str(self.nombre + ' ' + self.apellido)
 
 class Causa(models.Model):
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
     causa = models.CharField(max_length=50)
     def __str__(self):
-        return self.causa
+        return str(self.causa)
 
 class Tipo(models.Model):
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
     tipo = models.CharField(max_length=50)
     def __str__(self):
-        return self.tipo
+        return str(self.tipo)
 
 class Reporte(models.Model):
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
-    ubicacion = models.CharField(max_length=200)
-    equipo = models.CharField(max_length=200)
+    ubicacion = models.CharField(max_length=200,)
+    equipo = models.CharField(max_length=200,)
     tipo = models.CharField(max_length=200)
-    causa = models.CharField(max_length=200)
     rrhh = models.CharField(max_length=200)
-    titulo = models.CharField(max_length=50)
     descripcion = models.TextField()
     def __str__(self):
-        return self.reporte
+        return str(self.descripcion)
