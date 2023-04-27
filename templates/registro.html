@@ -1,0 +1,48 @@
+{% extends 'layouts/main.html' %} {%block content%}
+
+<div class="container-fluid bg-dark text-white py-4 px-5">
+    <div class="row">
+        <div class="col-5">
+            <h2>Nuevo usuario</h2>
+        </div>
+    </div>
+    <form method="POST" id="registrar-usuario" action="">
+        {% csrf_token %}
+
+        <div class="form-group col-12 col-md-3">
+            <label for="">Nombre</label>
+            <input type="text" name="first-name" id="first-name" class="form-control" placeholder="Nombre" />
+        </div>
+        <div class="form-group col-12 col-md-3">
+            <label for="">Apellido</label>
+            <input type="text" name="last-name" id="last-name" class="form-control" placeholder="Apellido" />
+        </div>
+        <div class="form-group col-12 col-md-3">
+            <label for="">Usuario</label>
+            <input type="text" name="username" id="username" class="form-control" placeholder="Usuario" />
+        </div>
+        <div class="form-group col-12 col-md-3">
+            <label for="">Email</label>
+            <input type="email" name="email" class="form-control" placeholder="Email" />
+        </div>
+        <div class="form-group col-12 col-md-3">
+            <label for="">Contraseña</label>
+            <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña" />
+        </div>
+        <div class="form-group col-12 col-md-3">
+            <label for="">Confirmar contraseña</label>
+            <input
+                type="password"
+                name="confirm_password"
+                id="confirm_password"
+                class="form-control"
+                placeholder="Confirmar contraseña"
+            />
+        </div>
+    </form>
+    <div class="form-group row mt-3 mx-0">
+        <button type="submit" class="btn btn-success col-12 col-md-3" form="registrar-usuario">Registrar</button>
+    </div>
+</div>
+
+{%endblock%}

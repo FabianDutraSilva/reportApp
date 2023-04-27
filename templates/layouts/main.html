@@ -7,31 +7,53 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="{% static 'styles/reset.css' %}" />
-        <link rel="stylesheet" href="{% static 'styles/index.css' %}" />
+        <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
         <title>TALAR</title>
         {% load bootstrap5 %} {% bootstrap_css %} {% bootstrap_javascript %}
     </head>
-    <body class="body">
-        <div class="gradient" class="p-3" class="row">
-            <img width="100px" src="{% static 'images/talar-logo.png' %}" alt="Talar-logo" />
+    <body class="body bg-light">
+        <div class="gradient">
+            <ul class="d-flex mb-0 align-items-center justify-content-start">
+                <li class="nav-item ml-0">
+                    <a class="" href="/">
+                        <img width="70px" src="{% static 'images/talar-logo.png' %}" alt="Talar-logo" />
+                    </a>
+                </li>
+                {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="/logout">Cerrar sesión</a>
+                </li>
+                <li class="nav-item m-1 m-sm-2 m-xl-3">
+                    <a class="nav-link text-light"    href="/">Inicio</a>
+                </li>
+                <li class="nav-item m-1 m-sm-2 m-xl-3">
+                    <a class="nav-link text-light" href="/reportes">Incidentes</a>
+                </li>
+                <li class="nav-item m-1 m-sm-2 m-xl-3">
+                    {% if request.user.is_authenticated and user.is_superuser %}
+                    <a class="nav-link text-light" href="/equipos"> Equipos </a>
+                    {%endif%}
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="/login">Iniciar sesión</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="/registro">Registrarse</a>
+                </li>
+                {%endif%}
+
+            </ul>
         </div>
 
-        <div class="row mx-0">
-            <div class="col-12" id="navegador">
-                <ul class="menu d-flex align-items-center">
-                    <li class="m-1 m-sm-2 m-xl-3">
-                        <a href="/">Inicio</a>
-                    </li>
-                    <li class="m-1 m-sm-2 m-xl-3">
-                        <a href="/incidentes">Incidentes</a>
-                    </li>
-                    <li class="m-1 m-sm-2 m-xl-3">
-                        <a href="/equipos"> Equipos </a>
-                    </li>
-                </ul>
+        <main role="main" class="">
+            <div class="">
+                {% if messages %} {% for message in messages %}
+                <div class="alert alert-{{message.tags}}" role="alert">{{message}}</div>
+                {% endfor %} {% endif %}
             </div>
-        </div>
 
-        <div id="content">{% block content %} {% endblock %}</div>
+            <div id="content">{% block content %} {% endblock %}</div>
+        </main>
     </body>
 </html>

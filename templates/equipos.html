@@ -1,17 +1,22 @@
 {% extends 'layouts/main.html' %} {%block content%}
 
-<a class="btn btn-success mx-5 mb-4" href="http://127.0.0.1:8000/agregar-equipo/"> Añadir equipo </a>
-
-{% for e in equipos %}
-
-<div class="m-2 border-bottom row d-flex">
-    <div>
-        <h2>{{e.codigo}}</h2>
-        <p>{{e.nombre}}</p>
+<div class="">
+    <div class="container-fluid pt-4 d-flex justify-content-center">
+        <a class="btn btn-success mx-5 mb-4 py-2 col-2" href="../equipo"> Añadir equipo </a>
     </div>
-    <div>
-        <a class="btn btn-danger mx-5 mb-4" href="/agregar-equipo/{{e.id}}">Editar</a>
+    {% for e in equipos %}
+    <div class="mx-5 my-2 border-bottom row d-flex">
+        <div>
+            <h2>{{e.codigo}}</h2>
+            <p>{{e.nombre}}</p>
+        </div>
+        {%if request.user.is_authenticated and user.is_superuser%}
+        <div>
+            <a class="btn btn-warning mx-5 mb-4" href="/equipo/{{e.id}}">Editar</a>
+            <a class="btn btn-danger mx-5 mb-4" href="/confirmar_borrar_equipo/{{e.id}}">Eliminar</a>
+        </div>
+        {%endif%}
     </div>
+
+    {% endfor %} {%endblock%}
 </div>
-
-{% endfor %} {%endblock%}

@@ -1,0 +1,23 @@
+{% extends 'layouts/main.html' %} {%block content%}
+
+<div class="container-fluid bg-dark text-white py-4 px-5">
+    <div class="row">
+        <div class="col-12">
+            <h2>Desea eliminar el equipo?</h2>
+        </div>
+        <div class="col-12 mt-5">
+            <h3>{{equipo.codigo}}</h3>
+            <p>Nombre: {{equipo.nombre}}</p>
+            <p>Marca: {{equipo.marca}}</p>
+            <p>Modelo: {{equipo.modelo}}</p>
+            <p>ID: {{equipo.id}}</p>
+        </div>
+    </div>
+    <div>
+        <a class="btn btn-success ml-1 mb-4" href="/borrar_equipo/{{equipo.id}}">Si</a>
+        <a class="btn btn-danger ml-1 mb-4" href="/equipos">No</a>
+    </div>
+
+</div>
+
+{%endblock%}

@@ -1,0 +1,28 @@
+{% extends 'layouts/main.html' %} {%block content%}
+<div>
+    <div class="container-fluid pt-4 d-flex justify-content-center">
+        <a class="btn btn-success mx-5 mb-4 py-2 col-2" href="../reporte/"> Añadir incidente </a>
+    </div>
+    {% for i in incidentes %}
+    <div class="mx-5 my-2 border-bottom row d-flex">
+        <div>
+            <h2>{{i.titulo}}<h2>
+            <h4>{{i.equipo}}</h4>
+            <p>{{i.descripcion}}</p>
+        </div>
+        {%if request.user.is_authenticated%}
+            {%if user.is_superuser or user == i.user %}
+            <div>
+                <a class="btn btn-warning mx-5 mb-4" href="/reporte/{{i.id}}">Editar</a>
+                <a class="btn btn-danger mx-5 mb-4" href="/confirmar_borrar_reporte/{{i.id}}">Eliminar</a>
+            </div>
+            {%endif%}
+        {%endif%}
+    </div>
+    {% endfor %} {%endblock%}
+
+</div>
+
+
+
+

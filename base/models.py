@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -63,10 +64,12 @@ class Tipo(models.Model):
 class Reporte(models.Model):
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
-    ubicacion = models.CharField(max_length=200,)
-    equipo = models.CharField(max_length=200,)
+    titulo = models.CharField(max_length=200)
+    ubicacion = models.CharField(max_length=200)
+    equipo = models.CharField(max_length=200)
+    clase = models.CharField(max_length=200)
     tipo = models.CharField(max_length=200)
-    rrhh = models.CharField(max_length=200)
     descripcion = models.TextField()
+    user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
     def __str__(self):
         return str(self.descripcion)
