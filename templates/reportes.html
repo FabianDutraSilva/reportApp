@@ -10,9 +10,14 @@
     {% for i in incidentes %}
     <div class="mx-5 my-2 border-bottom row d-flex">
         <div>
-            <h2>{{i.titulo}}<h2>
-            <h4>{{i.equipo}}</h4>
-            <p>{{i.descripcion}}</p>
+            <h2>{{i.equipo}}<h2>
+            <h4>{{i.titulo}}</h4>
+            <p>Descripción: {{i.descripcion}}</p>
+            <p>Clase: {{i.clase}}</p>
+            <p>Tipo: {{i.tipo}}</p>
+            <p>Reportado por: {{i.user}}</p>
+            <p>Creado: {{i.created}}</p>
+            <p>Editado: {{i.updated}}</p>
         </div>
         {%if request.user.is_authenticated%}
             {%if user.is_superuser or user == i.user %}

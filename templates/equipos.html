@@ -12,7 +12,15 @@
     <div class="mx-5 my-2 border-bottom row d-flex">
         <div>
             <h2>{{e.codigo}}</h2>
-            <p>{{e.nombre}}</p>
+            <h4>{{e.nombre}}</h4>
+            <p>Marca: {{e.marca}}</p>
+            <p>Modelo: {{e.modelo}}</p>
+            <p>Serie: {{e.serie}}</p>
+            <p>Centro de costo: {{e.centroCosto}}</p>
+            <p>Prioridad: {{e.propridad}}</p>
+            <p>Parte de: {{e.parteDe}}</p>
+            <p>Creado: {{e.created}}</p>
+            <p>Actualizado: {{e.updated}}</p>
         </div>
         {%if request.user.is_authenticated and user.is_superuser%}
         <div>
