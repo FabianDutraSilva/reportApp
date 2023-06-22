@@ -9,3 +9,9 @@ Funcionalidad disponible para todos los usuarios registrados.
 Los usuarios pueden ver todos los incidentes registrados.
 Los usuarios pueden editar y eliminar únicamente los incidentes creados por ellos.
 El superadmin puede ver, editar y eliminar todos los registros.
+
+## Instalar requierements
+Ejecutar el comando
+```
+pip install -r requirements.txt
+```
